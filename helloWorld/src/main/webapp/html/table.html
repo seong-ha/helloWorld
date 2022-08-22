@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table.html</title>
+</head>
+
+<body>
+    <a href="#winter">윈터의 정보</a>
+    <br>
+    <a href="#frequent">자주가는 사이트</a>
+    <h3>학생 점수</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title 부분</th>
+                <th>이름</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="2">Data 부분</th>
+                <td>홍길동</td>
+                <td>80</td>
+                <td>70</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <!-- <td>데이터부분</td> -->
+                <td>김민수</td>
+                <td>85</td>
+                <td>77</td>
+                <td>162</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Footer 부분</th>
+                <td colspan="4">3학년 9반 점수리스트</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br><br>
+
+    <figure>
+        <table border="1" id="winter">
+            <caption>윈터의 정보</caption>
+            <tr>
+                <th>이름</th>
+                <td>윈터</td>
+                <th>연락처</th>
+                <td>010-1234-5678</td>
+                <th>사진</th>
+            </tr>
+
+            <tr>
+                <th>주소</th>
+                <td colspan="3" align="center">대구 중구 중앙대로길 100</td>
+                <td rowspan="2"><a target="_blank" href="../profile/winter.html"><img src="../img/IMG_5645.jfif" alt="윈터사진입니다." width="80px"></a></td>
+            </tr>
+
+            <tr>
+                <th>자기소개</th>
+                <td colspan="3" align="center">에스파 윈터 직무를 맡은 학생</td>
+            </tr>
+        </table>
+        <a href="#">Top...</a>
+        <figcaption style="padding-left: 22%;">
+            윈터의 정보입니다.
+        </figcaption>
+    </figure>
+
+    <br>
+    <br>
+    <br>
+
+    <table border="1" id="frequent">
+        <caption>자주가는 사이트</caption>
+        <thead>
+            <tr>
+                <th>사이트명</th>
+                <th>url</th>
+                <th>설명</th>
+                <th>로고</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>다음</td>
+                <td><a target="_blank" href="https://www.daum.net">www.daum.net</a></td>
+                <td>다음 사이트 주소 입니다.</td>
+                <td>
+                    <a target="_blank" href="https://www.daum.net">
+                        <img src="../img/daum.png" alt="다음 로고" width="80px">
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>google</td>
+                <td><a target="_blank" href="https://www.google.com">www.google.com</a></td>
+                <td>구글 검색엔진입니다.</td>
+                <td>
+                    <a target="_blank" href="https://www.google.com">
+                        <img src="../img/google.png" alt="구글 로고" width="90px">
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>naver</td>
+                <td><a target="_self" href="https://www.naver.com">www.naver.com</a></td>
+                <td>네이버 페이지입니다.</td>
+                <td>
+                    <a target="_self" href="https://www.naver.com">
+                        <img src="../img/naver.png" alt="네이버 로고" width="90px">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="#">Top...</a>
+    <br><br><br>
+
+    <a href="../AddBankMemberServlet?id=user1&pw=1234&name=김사용&role=0">bank멤버 추가하기</a>
+    <br>
+    <a target="_blank" href="https://developer.mozilla.org/ko/docs/Web/HTML#key_resources">mdn의 중요한 자료</a>
+    <br>
+    <a target="_blank" href="https://developer.mozilla.org/ko/docs/Web/HTML#beginners_tutorials">mdn의 초보자 학습서</a>
+
+
+    <br><br><br><br><br><br><br><br><br>
+    <p>Lorem</p>
+    ipsum dolor <br>
+    sit amet <br>
+    consectetur, <br>
+    adipisicing elit. <br>
+    Nulla nihil <br>
+    recusandae, <br>
+    ipsum temporibus <br>
+    repellendus <br>
+    sint <br>
+    vero incidunt <br>
+    harum <br>
+    amet adipisci <br>
+    nisi <br>
+    illum autem <br>
+    saepe <br>
+    exercitationem quas <br>
+    soluta ratione <br>
+    architecto dicta!
+
+</body>
+
+</html>

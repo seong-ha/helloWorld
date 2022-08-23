@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/sample.html</title>
+    <link rel="stylesheet" href="../css2/style.css"> <!-- 이건 링크스타일 -->
+    <!-- style태그를 html태그 안에 하면 임베딩스타일 -->
+    <!-- 대체적으로 내부(임베딩스타일이나 링크스타일을 씀. -->
+    <style>
+        h3 {
+            background-color: yellow;
+        }
+
+        h3.first {
+            background-color: yellowgreen;
+        }
+
+        p {
+            background-color: yellowgreen;
+        }
+
+        h3,
+        p {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- style태그를 그냥 같은 줄에다가 바로 하면 인라인스타일 (우선순위 젤 높음)-->
+    <h3 style="background-color: green;">안녕하세요. 샘플페이지입니다.</h3>
+    <p>css 샘플 페이지입니다.</p>
+    <h3 class="first">여기는 first클래스입니다.</h3>
+    <h3> 이것도 저것도 아닌 부분입니다.</h3>
+    <h3>작성자는 홍길동입니다.</h3>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 가상선택자: 어떠한 상태 */
+        a:hover { /* 마우스가 올라와 있을때를 hover라고 한다. */
+            color: red;
+        }
+
+        a:visited { /* 이미 방문했을 때 적용   근데 나중에 적은게 적용됨*/
+            color: black;
+        }
+
+        a:active { /* 눌렀을 때 */
+            background-color: blue;
+        }
+
+        input:focus { /* 포커스가 들어와 있을 때 */
+            background-color: yellow;
+        }
+
+        input:checked+span { /*input태그가 checked 속성상태이면 인접한 span태그에 적용*/
+            color: blue;
+        }
+
+        input[type='checkbox']:checked+span {
+            /* type이 checkbox인 input태그가 checked 속성상태이면 인접한 span태그에 적용*/
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.daum.net">Daum사이트로</a><br>
+    <input type="text" name="" id="" placeholder="forcus me">
+    <br><br><br>
+
+    <input type="radio" name="gender" id=""><span>Male</span><br>
+    <input type="radio" name="gender" id=""><span>female</span><br>
+    <input type="radio" name="gender" id=""><span>Neuter</span><br>
+
+    <br>
+
+    <input type="checkbox" name="" id=""><span>자전거</span>
+    <input type="checkbox" name="" id=""><span>자돋차</span>
+    <input type="checkbox" name="" id=""><span>오토바이</span>
+</body>
+</html>

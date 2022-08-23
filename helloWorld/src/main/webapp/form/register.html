@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <style>
+        fieldset {
+            width: 25%;
+            margin: auto;
+        }
+
+        input[type='number'] {
+            display: inline-block;
+            width: 60px;
+        }
+
+        input[type='tel'] {
+            display: inline-block;
+            width: 80px;
+        }
+
+        div {
+            width: 20%;
+            margin: 10px auto;
+        }
+
+        th,
+        td {
+            border: 1px dotted green;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>
+                <h3>회원정보입력</h3>
+            </legend>
+            <hr size="4" color="gray">
+            <table border="1" style="border-collapse: collapse;">
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+
+                <tr>
+                    <th>아이디</th>
+                    <td>
+                        <input type="text" id="id" name="id" required>
+                        <button type="button">중복확인</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>비밀번호</th>
+                    <td style="font-size: 0.8em;">
+                        <input type="password" id="pw" name="pw" required><small>* 비밀번호는 4~16자로 입력해주세요.</small>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>비밀번호 확인</th>
+                    <td><input type="password" id="pwConfirm" name="pwConfirm" required></td>
+                </tr>
+
+                <tr>
+                    <th>생일/성별</th>
+                    <td>
+                        <input type="number" id="year" name="year" required><small>년</small>
+                        <input type="number" id="month" name="month" required><small>월</small>
+                        <input type="number" id="day" name="day" required><small>일</small>
+                        <label for="male">남</label>
+                        <input type="radio" id="male" name="gender" value="1" checked>
+                        <label for="female">여</label>
+                        <input type="radio" id="female" name="gender" value="0">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>이메일</th>
+                    <td>
+                        <input style="width: 30%;" type="text" id="emailId" name="emailId" required> <small>@</small>
+                        <select name="email">
+                            <option value="">선택</option>
+                            <option value="daum">daum.net</option>
+                            <option value="naver">naver.com</option>
+                            <option value="google">google.com</option>
+                        </select>
+                        <button type="button">중복확인</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>휴대폰</th>
+                    <td>
+                        <input type="tel" id="phone1" name="phone1"> -
+                        <input type="tel" id="phone2" name="phone2"> -
+                        <input type="tel" id="phone3" name="phone3">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>추천인</th>
+                    <td>
+                        <input type="tel" id="recommand" name="recommand">
+                        <button type="button">추천인 검색</button>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>뉴스메일</th>
+                    <td>
+                        <label for="newsReceive">받습니다.</label>
+                        <input type="radio" id="newsReceive" name="news" value="1" checked>
+                        <label for="newsNotReceive">받지 않습니다.</label>
+                        <input type="radio" id="newsNotReceive" name="news" value="0">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>SMS안내</th>
+                    <td>
+                        <label for="smsReceive">받습니다.</label>
+                        <input type="radio" id="smsReceive" name="sms" value="1" checked>
+                        <label for="smsNotReceive">받지 않습니다.</label>
+                        <input type="radio" id="smsNotReceive" name="sms" value="0">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>웹Push알림</th>
+                    <td>
+                        <label for="pushReceive">받습니다.</label>
+                        <input type="radio" id="pushReceive" name="push" value="1" checked>
+                        <label for="pushNotReceive">받지 않습니다.</label>
+                        <input type="radio" id="pushNotReceive" name="push" value="0">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>미터</th>
+                    <td>
+                        <meter value=".5" min="0" max="1"></meter>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>자기소개</th>
+                    <td>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+
+            </table>
+            <div>
+                <input type="image" src="../img/load.png" width="40px">
+                <input type="image" src="../img/cancel.png" width="40px">
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>

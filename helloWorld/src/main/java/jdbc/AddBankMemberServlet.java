@@ -33,7 +33,7 @@ public class AddBankMemberServlet extends HttpServlet {
 		
 		MemberManage.getInstance().registCustomer(member);
 		
-		response.sendRedirect("index.html");
+//		response.sendRedirect("index.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

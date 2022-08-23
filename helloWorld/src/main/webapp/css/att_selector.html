@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a[href] {
+            color: red;
+        }
+
+        a[target='_blank'] {
+            background-color: yellow;
+        }
+
+        a[href^='https'] { /* https로 "시작"하는 문자인애들 ^(시작) */
+            border: 1px solid green;
+        }
+
+        a[href$='net'] { /* net으로 "끝나는" 문자인애들 $(끝남) */
+            font-size: 2em;
+        }
+
+        h3[title~='first'] { /* 독립되어있는 단어이면서 포함하면 적용 ~ */
+            color: red;
+        }
+
+        h3[title*='first'] { /* 공백으로든 연결이든 뭐든 포함되어있으면 적용 *  */
+            background-color: yellowgreen;
+        }
+
+        h3[title|='heading'] { 
+            /* 지정된 어트리뷰트의 값과
+            일치 or 연이은 하이픈(“값-“)으로  sdgfd-heading-sfa (X) -headingjlajfh (X) (시작이 heading이어야함.)
+            시작하는 요소를 선택한다. | */
+            border: 3px dotted gold;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://www.daum.net">Daum</a><br>
+    <a href="https://www.google.com" target="_blank">Google</a><br>
+    <a href="http://www.naver.com" target="_top">Naver</a><br>
+    <a>none</a><br>
+
+    <h3 title="heading first">heading first</h3>
+    <h3 title="heading-first">heading-first</h3>
+    <h3 title="heading second">heading second</h3>
+    <h3 title="heading-third">heading-third</h3>
+</body>
+
+</html>

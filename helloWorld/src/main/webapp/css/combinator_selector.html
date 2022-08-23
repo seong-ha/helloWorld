@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>combinator_selector 복합선택자</title>
+    <style>
+        div>p { /* div>p → "div의 자식요소 중 p태그"  || div p → div 아래의 모든 p태그*/
+            color: red;
+
+        }
+
+        p+span { 
+            /* p태그의 형제 요소 중
+            p태그 바로 뒤에 위치하는 span 요소를 선택한다.*/
+            color: blue;
+        }
+        p~span {/* p태그의 형제 요소 중 p태그 뒤에 위치하는 span태그 요소를 모두 선택한다. */
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- div>p+span.first -->
+    <div>
+        <p></p>
+        <span class="first"></span>
+    </div>
+
+    <h1>Heading</h1>
+    <div>
+        <p>paragraph1</p>
+        <p>paragraph2</p>
+        <span>
+            <p>span안의paragraph3</p>
+        </span>
+        <span>span1</span>
+        <div>div</div>
+        <span>span2</span>
+    </div>
+    <p>paragraph4</p>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        div>p {
+            color: red;
+        }
+
+        p+span {
+            color: blue;
+        }
+
+        p~span {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- div>p+span.first -->
+    <div>
+        <p>ppp</p>
+        <span class="first">firstspan</span>
+    </div>
+
+    <h1>Heading</h1>
+    <div>
+        <p>paragraph1</p>
+        <p>paragraph2</p>
+        <span>
+            <p>span안의paragraph3</p>
+        </span>
+        <span>span1</span>
+        <div>div</div>
+        <span>span2</span>
+    </div>
+    <p>paragraph4</p>
+</body>
+</html>

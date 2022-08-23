@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a[href] {
+            color: red;
+        }
+
+        a[target='_blank'] {
+            background-color: yellow;
+        }
+
+        a[href^='https'] {
+            border: 1px solid green;
+        }
+
+        a[href$='net'] {
+            font-size: 2em;
+        }
+
+        h3[title~='first'] {
+            color: red;
+        }
+
+        h3[title*='first'] {
+            background-color: yellowgreen;
+        }
+
+        h3[title|='heading'] {
+            border: 3px dotted gold;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://www.daum.net">Daum</a><br>
+    <a href="https://www.google.com" target="_blank">Google</a><br>
+    <a href="http://www.naver.com" target="_top">Naver</a><br>
+    <a>none</a><br>
+
+    <h3 title="heading first">heading first</h3>
+    <h3 title="heading-first">heading-first</h3>
+    <h3 title="heading second">heading second</h3>
+    <h3 title="heading-third">heading-third</h3>
+</body>
+
+</html>

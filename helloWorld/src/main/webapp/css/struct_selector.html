@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 구조적 가상선택자 */
+        ol>li:nth-child(1) {/* ol의 자식요소 li의 n번째 자식 */
+            color: yellow;
+        }
+
+        ol>li:last-child {/* ol의 자식요소 li의 마지막 자식 */
+            color: green;
+        }
+
+        ol>li:nth-last-child(2) {/* ol의 자식요소 li의 마지막에서 n번째 자식 */
+            color: blue;
+        }
+
+        ul>li:nth-child(2n+1) {/* ul의 자식요소 li의 n(수식사용)번째 자식 */
+            background-color: yellow;
+        }
+
+        ul>li:nth-last-child(2n) {/* ul의 자식요소 li의 마지막에서 n(수식사용)번째 자식 */
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>Espresso</li>
+        <li>Americano</li>
+        <li>Caffe Latte</li>
+        <li>Caramel Latte</li>
+        <li>Caffe Mocha</li>
+        <li>Cappucino</li>
+    </ol>
+
+    <ul>
+        <li>Espresso</li>
+        <li>Americano</li>
+        <li>Caffe Latte</li>
+        <li>Caramel Latte</li>
+        <li>Caffe Mocha</li>
+        <li>Cappucino</li>
+    </ul>
+</body>
+
+</html>

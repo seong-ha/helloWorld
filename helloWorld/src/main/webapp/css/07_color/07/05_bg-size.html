@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>배경 이미지</title>
+  <style>
+
+    div {
+      width: 500px;
+      padding: 20px;
+      border: 10px dotted red;
+      margin: 10px;
+      background-color: aqua;
+    }
+    .bg1 {
+      width: 100%;
+      height: 500px;
+      background: url(images/bg4.jpg) no-repeat left top;
+      background-size: auto;
+    }
+
+    .bg2 {
+      width: 100%;
+      height: 500px;
+      background: url(images/bg4.jpg) no-repeat left top;
+      background-size: 200px 150px;
+    }
+
+    .bg3 {
+      width: 100%;
+      height: 500px;
+      background: url(images/bg4.jpg) no-repeat left top;
+      background-size: 60% 40%;
+    }
+
+    .bg4 {
+      width: 100%;
+      height: 500px;
+      background: url(images/bg4.jpg) no-repeat left top;
+      background-size: contain;
+    }
+
+    /* 위에꺼 아래꺼는 반대개념 */
+
+    .bg5 {
+      width: 100%;
+      height: 500px;
+      background: url(images/bg4.jpg) no-repeat left top;
+      background-size: cover;
+    }
+
+    .bg6 {
+      width: 100%;
+      height: 500px;
+      background: url(images/bg4.jpg) no-repeat left top;
+      background-size: 100% 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg1"></div>
+  <div class="bg2"></div>
+  <div class="bg3"></div>
+  <div class="bg4"></div>
+  <div class="bg5"></div>
+  <div class="bg6"></div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div>p:nth-of-type(2n) {
+            background-color: red;
+        }
+
+        div>p:nth-last-of-type(2n) {
+            font-size: 1.5em;
+        }
+
+        div>p:first-of-type {
+            background-color: bisque;
+        }
+
+        div>p:last-of-type {
+            background-color: yellow;
+        }
+
+        input:not([type='password']) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h3>Espresso</h3>
+    <p>Americano</p>
+    <p>Caffe Latte</p>
+    <p>Caramel Latte</p>
+    <h4>Caffe Mocha</h4>
+    <p>Cappucino</p>
+
+    <br><br>
+
+    <div>
+        <h3>Espresso</h3>
+        <h3>
+            <p>ppp</p>
+            <p>ppp</p>
+        </h3>
+        <p>Americano</p>
+        <p>Caffe Latte</p>
+        <p>Caramel Latte</p>
+        <h4>Caffe Mocha</h4>
+        <p>Cappucino</p>
+    </div>
+
+    <br><br>
+
+    <input type="text" value="text">
+    <input type="email" value="email">
+    <input type="password" value="1234">
+</body>
+</html>

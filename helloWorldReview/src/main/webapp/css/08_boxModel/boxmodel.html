@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.box1 {
+            /* border: 20px dotted gray; 아래꺼와 같다.*/
+            border-width: 20px;
+            border-style: dotted;
+            border-color: gray;
+
+            /* padding: 40px 40px 40px 40px; 아래꺼와 같다.*/
+            padding-top: 40px;
+            padding-right: 40px;
+            padding-left: 40px;
+            padding-bottom: 40px;
+
+            margin: 60px 60px;
+            /* top bottom */
+            background-color: cornflowerblue;
+
+            display: inline block;
+            /* 이게 있어야 아래것을 쓸 수 있다. */
+            width: 300px;
+        }
+
+        /* display가 block속성이어야 width 적용이 가능하다 */
+        
+        div.box2 {
+            display: inline;
+            border: 20px dotted yellowgreen;
+            padding: 40px;
+            margin: 30px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid,
+        ad magnam esse sed a vel nobis commodi illo, optio eum totam. Quod
+        id dicta ipsum minus harum saepe dolorum? Maiores.
+    </div>
+    <br>
+    <div class="box2">
+        Lorem
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 1000px;
+            border: 1px solid gray;
+            border-top: 2px solid black;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        th,
+        td {
+            width: 200px;
+            border: 1px solid grey;
+            
+        }
+        td {
+        text-align: right;
+        padding-right: 20px;
+        }
+
+        .totaltr {
+            background-color: #f7faff;
+        }
+
+        th:not([class="totalth"]) {
+            background-color: #f8f8f8;
+        }
+
+        .a {
+            background-color: #0056af;
+            display: inline-block;
+            margin: 1px 1px;
+            vertical-align: middle;
+            width: auto;
+            min-width: 22px;
+            height: auto;
+            min-height: 22px;
+            font-size: 13px;
+            line-height: 21px;
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            border-radius: 100%;
+        }
+
+        .b {
+            background-color: #dc4c14;
+            display: inline-block;
+            margin: 1px 1px;
+            vertical-align: middle;
+            width: auto;
+            min-width: 22px;
+            height: auto;
+            min-height: 22px;
+            font-size: 13px;
+            line-height: 21px;
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            border-radius: 100%;
+        }
+
+        tr.totaltr th {
+            color: #405985;
+            font-weight: 600;
+            border-bottom: 1.1px dotted #6d88b7;
+            background-color: #f7faff;
+        }
+
+        tr.totaltr td {
+            color: #405985;
+            font-weight: 600;
+            border-bottom: 1.1px dotted #6d88b7;
+            background-color: #f7faff;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>시도별 일일 접종 현황</h3>
+    <hr>
+    <table class="injectionTotal">
+        <caption>접종실적 총괄</caption>
+
+        <tr>
+            <th>구분</th>
+            <th>1차 접종</th>
+            <th>2차 접종</th>
+            <th>3차 접종</th>
+            <th>4차 접종</th>
+        </tr>
+
+        <tr>
+            <th class="todayhaspp">당일 누적<span class="a">A</span> + <span class="b">B</span></th>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+
+        <tr>
+            <th class="todayhas">당일 실적<span class="a">A</span></th>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+
+        <tr>
+            <th class="yesterdayhaspp">전일 누적<span class="b">B</span></th>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    <table class="seoulbusandaegu">
+        <caption>서울부산대구 접종현황</caption>
+
+        <tr>
+            <th rowspan="2">구분</th>
+            <th colspan="2">1차</th>
+            <th colspan="2">2차</th>
+            <th colspan="2">3차</th>
+            <th colspan="2">4차</th>
+        </tr>
+
+        <tr>
+            <th>당일 실적</th>
+            <th>당일 누계</th>
+            <th>당일 실적</th>
+            <th>당일 누계</th>
+            <th>당일 실적</th>
+            <th>당일 누계</th>
+            <th>당일 실적</th>
+            <th>당일 누계</th>
+        </tr>
+
+        <tr class="totaltr">
+            <th class="totalth">합계</th>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+
+        <tr>
+            <th>서울</th>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+
+        <tr>
+            <th>대구</th>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+
+        <tr>
+            <th>부산</th>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </table>
+</body>
+
+</html>

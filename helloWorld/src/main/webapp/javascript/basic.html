@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/basic.html</title>
+    <style>
+        li {
+            list-style-type: georgian;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h3>Hello World!</h3>
+    <script>
+        let person = {
+            name: 'winter',
+            age: '22',
+            showInfo: function () {
+                console.log('이름은 ' + this.name +
+                    '이고, 나이는 ' + this.age + '살입니다.');
+            }
+        };
+        person.showInfo();
+// -----------------------------------------------------------------------------------------
+
+        document.write('<h1>야이야이야 그렇게 살아가고 그렇게 후회하고 눈물도 흘리히고호</h1>');
+        // window.alert('경고구문입니다. 삑');
+
+        let str = '<ul><li>성하</li><li>짱</li></ul>';
+        document.write(str);
+
+// -----------------------------------------------------------------------------------------
+
+        // 배열: object
+        let yedams = ['상영', '준형', '현성', '주훈', '용주', '순탁', '승현', '두영', '정욱'];
+
+        let yedamStr = '<ul>';
+        // + 연산자: concat()
+        // for (let i = 0; i < yedams.length; i++) {
+        //     yedamStr += '<li>' + yedams[i] + '</ii>';
+        // }
+
+            // ----------------------------------------------
+
+        // 향상 for문 (of는 배열일 경우에 하나씩 읽어오는거)
+        for (let yedam of yedams) {
+            yedamStr += '<li>' + yedam + '</ii>';
+        }
+
+        yedamStr += '</ul>';
+        document.write(yedamStr);
+
+// -----------------------------------------------------------------------------------------
+
+        let member = {
+            userId: 'nara',
+            userName: '나라',
+            point: 999
+        }
+
+        // 특정 속성의 값 읽어오기
+        console.log(member.userId); // nara
+        console.log(member['userName']); // 나라
+        let field = 'point';
+        console.log(member[field]); // 999
+
+        // 향상 for문(in은 object일 경우에 각각의 속성 하나씩 읽어오는 거)
+        for (let prop in member) {
+            console.log('속성: ' + prop + ', 값: ' + member[prop]);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        // 해당 월의 공란을 반환해주는 함수. getEmptyCnt(month)
+        function getEmptyCnt(month) {
+            let empty = 0;
+            switch (month) {
+                case 2: case 3: case 11:
+                    empty = 2;
+                    break;
+                case 6: case 10:
+                    empty = 3;
+                    break;
+                case 4: case 7:
+                    empty = 5;
+                    break;
+                case 1:
+                    empty = 6;
+                    break;
+                case 8:
+                    empty = 1;
+                    break;
+                case 9: case 12:
+                    empty = 4;
+                    break;
+                default:
+                    empty = 0;
+            }
+
+            return empty;
+        }
+
+
+        // 해당월의 마지막 날짜를 반환해주는 함수. getLastDay(month)
+        function getLastDay(month) {
+            let lastDay = 0;
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                lastDay = 31
+            } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+                lastDay = 30;
+            } else {
+                lastDay = 28;
+            }
+
+            return lastDay;
+        }
+
+        // 월화수목금토일
+        function dayTh() {
+            let tr = '<tr style="background-color: burlywood;">'
+            let days = ['일', '월', '화', '수', '목', '금', '토'];
+
+            days.forEach((val) => {
+                if (val == '토') {
+                    tr += `<th style="color: blue">${val}</th>`;
+                } else if (val == '일') {
+                    tr += `<th style="color: red">${val}</th>`;
+                } else {
+                    tr += `<th>${val}</th>`;
+                }
+            });
+
+            tr += '</tr>';
+            return tr;
+        }
+        let month = 0;
+        monthWrite(8);
+
+        function monthWrite(mth) {
+            let h3 = `<h3>${mth}월 달력 출력하기</h3>`
+
+            document.write(h3);
+            month = mth;
+        }
+
+        let cal = '<table border=1>';
+        cal += dayTh();
+        cal += '<tr>';
+
+        // 앞에 비어있는 칸 지정
+        let empty = getEmptyCnt(month); // getEmptyCnt(8월);
+        let lastDay = getLastDay(month); // getLastDay(8월);
+        for (let f = 0; f < empty; f++)
+            cal += '<td></td>';
+
+        for (let day = 1; day <= lastDay; day++) {
+            if ((empty + day) % 7 == 0) {
+                cal += `<td style="color: blue; font-weight: bold;">${day}</td>`;
+            } else if ((empty + day) % 7 == 1) {
+                cal += `<td style="color: red; font-weight: bold;">${day}</td>`;
+            } else {
+                cal += `<td>${day}</td>`;
+            }
+
+            if ((empty + day) % 7 == 0) {
+                cal += '</tr><tr>';
+            }
+        }
+        cal += '</tr>';
+        cal += '</table>';
+
+        document.write(cal);
+    </script>
+</body>
+
+</html>

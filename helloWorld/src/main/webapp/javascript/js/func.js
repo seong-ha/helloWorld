@@ -1,5 +1,5 @@
 function sum(num1, num2) {
-    return num1 + num2;  // return undefined. 반환값은 정해지지 않았고 걍 그때그때 잘 반환함.
+    return num1 + num2;  // return undefined. 반환타입은 정해지지 않았고 걍 그때그때 잘 반환함.
 }
 
 let num;

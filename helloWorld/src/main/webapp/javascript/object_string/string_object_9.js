@@ -10,6 +10,7 @@ console.log(str1.substring(0, 3));
 console.log(str2.valueOf()); // 객체 -> 기본타입
 console.log(typeof str2.valueOf());
 
+// eval: 문자열을 실행 가능한 자바스크립트 코드로 변호나하는 전역 메서드.(문자열만 변환함)
 let result1 = eval('1 + 2 + 3');
 console.log(result1);
 let result2 = eval(new String('1 + 2 + 3'));

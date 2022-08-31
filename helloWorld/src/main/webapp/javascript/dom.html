@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: #ff0000;
+        }
+
+        .blue {
+            color: #0000ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+            <li id="one" class="red">Seoul</li>
+            <li id="two" class="red">London</li>
+            <li id="three" class="red">Newyork</li>
+            <li id="four">Tokyo</li>
+        </ul>
+        <ul>
+            <li>apple</li>
+            <li>banana</li>
+            <li>cherry</li>
+        </ul>
+    </div>
+    <script>
+        // dom query 혹은 traversing
+        // getElementById, getElementByName, getElementByTagName, getElementByClassName,
+        let one = document.getElementById('one'); // getElementById
+        console.log(one);
+        console.log(one.innerHTML);
+        console.log(one.getAttribute('class'));
+
+        one.style.backgroundColor = 'yellow';
+        one.style.fontWeight = 'bold';
+        one.innerHTML = '서울';
+
+
+        // 새로운 요소 추가 (<li>New deli</li>를 첫번째 ul 마지막 li로 추가)
+        let uls = document.getElementsByTagName('ul'); // getElementByTagNames
+        console.log(uls);
+        uls[0].style.listStyleType = 'none';
+
+        let newdeli = document.createElement('li');
+        newdeli.innerText = 'New Deli';
+        uls[0].appendChild(newdeli);
+
+        // 요소 삭제
+        document.getElementById('four').remove();
+
+        // NewDeli: 컬러 (빨간색)
+        let list = document.getElementsByTagName('li');
+        list[3].style.color = 'yellow';
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function() {
+                window.alert(this.innerHTML);
+            }
+        }
+
+        let reds = document.getElementsByClassName('red');
+        for (let i = 0; i < reds.length; i++) {
+            reds[i].onmouseover = function () {
+                this.style.fontWeight = 'bold';
+                this.style.fontSize = '20px';
+            }
+
+            reds[i].onmouseout = function () {
+                this.style.fontWeight = '100';
+                this.style.fontSize = '16px';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -12,8 +12,10 @@ console.log(str.substring(0,7));    //  인덱스 0에서 7(미포함)까지 빼
 console.log(str.indexOf('orn'));    // 앞에서부터 해당 문자열 찾아서 시작위치 반환
 console.log(str.lastIndexOf('orn'));    // 뒤에서부터 해당 문자열 찾아서 시작위치 반환(인덱스는 둘다 같은걸 찾음. 수사시작점이 다른것뿐)
 
-console.log(str.indexOf('Good', 5));  // 뒤쪽 인덱스를 기준으로 몇인덱스에 해당 단어 시작 위치 반환.
-console.log(str.indexOf('Good', str.indexOf('Good') + 1)); // str.indexOf('Good', 0 + 1) -> 1 기준으로 0은 -1
+console.log(str.indexOf('Good', 5));  // 뒤쪽 인덱스를 기준으로 뒤로 가며 해당 단어 수사 시작. 있으면 위치 반환. 없으면 -1반환
+ 
+ // str.indexOf('Good', 0 + 1) -> 1 기준으로 'Good'을 수사하면 없으니 -1 반환
+console.log(str.indexOf('Good', str.indexOf('Good') + 1));
 
 
 // 문자열에서 반복되는 횟수

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+            <li id="one" class="red">Seoul</li>
+            <li id="two" class="red">London</li>
+            <li id="three" class="red">Newyork</li>
+            <li id="four">Tokyo</li>
+        </ul>
+        <ul>
+            <li>apple</li>
+            <li>banana</li>
+            <li>cherry</li>
+        </ul>
+    </div>
+    <script>
+        let one = document.getElementById('one');
+        console.log(one);
+        console.log(typeof one.innerHTML);
+        console.log(one.getAttribute('class'));
+
+        one.style.backgroundColor = 'yellow';
+        one.style.fontWeight = 'bold';
+        one.innerText = '스어울';
+
+        let uls = document.getElementsByTagName('ul');
+        console.log(uls);
+        uls[0].style.listStyleType = 'none';
+
+        let newdeli = document.createElement('li');
+        newdeli.innerText = 'NewDeli';
+        uls[0].appendChild(newdeli);
+
+        document.getElementById('four').remove();
+
+        let list = document.getElementsByTagName('li');
+        list[3].style.color = 'yellow';
+
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function() {
+                alert(this.innerHTML);
+            }
+        }
+
+        let reds = document.getElementsByClassName('red');
+        for (let i = 0; i < reds.length; i++) {
+            reds[i].onmouseover = function() {
+                this.style.fontWeight = 'bold';
+                this.style.fontSize = '20px';
+            }
+
+            reds[i].onmouseout = function () {
+                this.style.fontWeight = 'normal';
+                this.style.fontSize = '16px';
+            }
+        }
+    </script>
+</body>
+</html>

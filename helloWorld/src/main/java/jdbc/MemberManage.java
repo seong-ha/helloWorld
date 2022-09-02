@@ -120,5 +120,27 @@ public class MemberManage extends DAO {
 		
 		return false; // 비정상 처리
 	}
+
+	public boolean updateMember(Member member) {
+
+		int result = 0;
+		try {
+			conn();
+			String sql = "update bankMember set member_pw = ?, member_name = ?, role = ? where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMemberPw());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setString(3, member.getRole());
+			pstmt.setString(4, member.getMemberId());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
+		return (result > 0) ? true : false;
+	}
 	
 }

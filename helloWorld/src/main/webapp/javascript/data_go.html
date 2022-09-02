@@ -18,8 +18,8 @@
         }
 
         #detailInfo {
-            width:30%;
-            float: left;
+            width:29%;
+            float: right;
             border: 1px solid green;
             height: 300px;
         }
@@ -61,8 +61,6 @@
         // 리스트 선택
         document.getElementById('sido').addEventListener('change', searchCenterFnc);
         
-        ///////////////////////////////////
-
         // 화면 초기화
         let gdata;
 
@@ -106,21 +104,29 @@
         }
         
         function makeTr(center) {
+            console.log(center);
             let tr = document.createElement('tr');
 
+            // 마우스 올라가면 해당 org, lat, lng를 #detailInfo>ul>li>span 에 띄우기
             tr.addEventListener('mouseover', function () {
-                let trChild = this.children;
-                let org = trChild[1].textContent;
-                let lat = trChild[5].textContent;
-                let lng = trChild[4].textContent;
-
-                let detailInfo = document.querySelectorAll('#detailInfo>ul>li');
-
-                detailInfo[0].textContent = org;
-                detailInfo[1].textContent = lat;
-                detailInfo[2].textContent = lng;
-            })
+                let props = ['org', 'lat', 'lng'];
+                console.log(center);
+                props.forEach((prop, idx) => {
+                    let detailInfo = document.querySelectorAll('#detailInfo>ul>li>span');
+                    detailInfo[idx].textContent = center[prop] != '' ? center[prop] : '없음';
+                });
+                
+            });
             
+            // 마우스가 벗어나면 해당 org, lat, lng를 #detailInfo>ul>li>span 비워주기
+            tr.addEventListener('mouseout', function () {
+                let detailInfo = document.querySelectorAll('#detailInfo>ul>li>span');
+
+                detailInfo[0].textContent = '';
+                detailInfo[1].textContent = '';
+                detailInfo[2].textContent = '';
+            });
+
             // 보고 싶은 항목
             let infos = ['id', 'centerName', 'sido', 'sigungu', 'phoneNumber', 'address'];
 
@@ -135,7 +141,7 @@
         }
         
         function searchCenterFnc(e) {
-            console.log(e.target.nodeName);
+            // console.log(e.target.nodeName);
 
             let sido;
             if (e.target.nodeName == 'BUTTON') {

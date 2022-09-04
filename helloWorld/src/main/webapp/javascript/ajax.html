@@ -197,7 +197,7 @@
         function modifyMember(e) {
         	let tr = e.target.parentElement.parentElement; // e.target == button태그
             let child = tr.children; // [td, td, td, td, td]
-
+            
             let mid = child[0].textContent;
             let mname = child[1].firstElementChild.value; // tr>input>value
             let mpw = child[2].firstElementChild.value; // tr>input>value

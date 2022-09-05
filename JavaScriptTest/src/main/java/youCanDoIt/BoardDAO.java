@@ -9,9 +9,9 @@ public class BoardDAO extends DAO {
 	public List<Board> getBoardList() {
 		List<Board> list = new ArrayList<>();
 		
-		String sql = "select bno, title, content, writer, to_char(creation_date, 'yyyy-mm-dd') as \"creation_date\" from tbl_board";
-		conn();
 		try {
+			conn();
+			String sql = "select bno, title, content, writer, to_char(creation_date, 'yyyy-mm-dd') as \"creation_date\" from tbl_board";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -30,31 +30,73 @@ public class BoardDAO extends DAO {
 		return list;
 	}
 
-	public boolean deleteBoard(int bno) {
-
+	public boolean deleteBoard(String bno) {
 		
-		return false;
-	}
-
-	public boolean insertBoard(Board board) {
 		int result = 0;
+		
 		try {
 			conn();
-			String sql = "insert into tbl_board values(?,?,?,?,to_date(?, 'yyyy-mm-dd')";
+			String sql = "delete tbl_board where bno = " + bno;
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, board.getBno());
-			pstmt.setString(2, board.getTitle());
-			pstmt.setString(3, board.getContent());
-			pstmt.setString(4, board.getWriter());
-			pstmt.setString(5, board.getCreationDate());
+//			pstmt.setString(1, bno);
 
 			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		
+		return result > 0 ? true : false;
+	}
+
+	// insert 성공하면 바로 다시 
+	public Board insertBoard(Board board) {
+		int result = 0;
+		Board resultBoard = new Board();
+		
+		try {
+			conn();
+			String sql = "insert into tbl_board values(seq_board.nextval,?,?,?,sysdate)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, board.getTitle());
+			pstmt.setString(2, board.getContent());
+			pstmt.setString(3, board.getWriter());
+
+			result = pstmt.executeUpdate();
+			
+			if (result > 0) {
+				String getSql = "select bno, title, content, writer, to_char(creation_date, 'yyyy-mm-dd') as \"creation_date\" "
+								+ "from tbl_board "
+								+ "where bno = (select max(bno) from tbl_board)";
+				pstmt = conn.prepareStatement(getSql);
+				
+				rs = pstmt.executeQuery();
+				
+				if (rs != null) {
+					while (rs.next()) {
+						resultBoard.setBno(rs.getInt("bno"));
+						resultBoard.setTitle(rs.getString("title"));
+						resultBoard.setContent(rs.getString("content"));
+						resultBoard.setWriter(rs.getString("writer"));
+						resultBoard.setCreationDate(rs.getString("creation_date"));
+						System.out.println("insert후 가져오기성공 bno=" + resultBoard.getBno());
+						return resultBoard;
+					}
+				} else {
+					System.out.println("insert는 성공 가져오는 건 실패");
+				}
+			} else {
+				System.out.println("insert도, insert된거 가져오기도 실패");
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		return (result > 0) ? true : false;
+		
+		return resultBoard;
 	}
 }

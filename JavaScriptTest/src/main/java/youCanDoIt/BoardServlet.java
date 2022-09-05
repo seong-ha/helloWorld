@@ -1,6 +1,7 @@
 package youCanDoIt;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,8 @@ import com.google.gson.JsonObject;
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static BoardDAO dao = new BoardDAO();
+	
 	public BoardServlet() {
 		super();
 	}
@@ -28,8 +31,8 @@ public class BoardServlet extends HttpServlet {
 		// 조회의 기능 구현.
 		response.setCharacterEncoding("utf-8"); // 한글 처리를 위해
 		response.setContentType("text/json; charset=utf-8");
-		System.out.println("들어왔어");
-		BoardDAO dao = new BoardDAO();
+
+		
 		List<Board> list = dao.getBoardList();
 
 		JsonArray arr = new JsonArray();
@@ -63,33 +66,50 @@ public class BoardServlet extends HttpServlet {
 
 		if (job.equals("insert")) {
 			Board board = new Board();
-			board.setBno(Integer.parseInt(request.getParameter("bno")));
 			board.setTitle(request.getParameter("title"));
 			board.setContent(request.getParameter("content"));
 			board.setWriter(request.getParameter("writer"));
-			board.setWriter(request.getParameter("creation_date"));
 			
-			BoardDAO dao = new BoardDAO();
-
-			if (dao.insertBoard(board)) {
-
+			Board result = dao.insertBoard(board);
+			
+			if (result != null) {
 				JsonObject obj = new JsonObject();
 				obj.addProperty("returnCode", "success");
-				obj.addProperty("bno", board.getBno());
-				obj.addProperty("title", board.getTitle());
-				obj.addProperty("content", board.getContent());
-				obj.addProperty("writer", board.getWriter());
-				obj.addProperty("creation_date", board.getCreationDate());
+				obj.addProperty("bno", result.getBno());
+				obj.addProperty("title", result.getTitle());
+				obj.addProperty("content", result.getContent());
+				obj.addProperty("writer", result.getWriter());
+				obj.addProperty("creation_date", result.getCreationDate());
 
 				Gson gson = new GsonBuilder().create(); // instance 생성.
-
+				
 				String json = gson.toJson(obj); // toJson메소드(cal)
 				response.getWriter().print(json);
+
 			} else {
 				response.getWriter().print("fail");
 			}
 		} else if (job.equals("delete")) {
-
+			
+			String bno = request.getParameter("bno");
+			String[] bnoArr = bno.split(",");
+			
+			String bnos = "";
+			for (int i = 0; i < bnoArr.length; i++) {
+				if (i == (bnoArr.length - 1)) {
+					bnos += bnoArr[i];
+					break;
+				}
+				
+				bnos += bnoArr[i] + " or bno = ";
+			}
+			
+			if (dao.deleteBoard(bnos)) {
+				response.getWriter().print("success");
+			} else {
+				response.getWriter().print("fail");
+			}
+			
 		}
 
 	}

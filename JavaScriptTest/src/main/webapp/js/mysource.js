@@ -2,26 +2,34 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     showBoard();
-    let addBtn = document.querySelector('button');
+
+    let addBtn = this.getElementById('addBtn');
     addBtn.addEventListener('click', addBoard);
 
+    let delBtn = document.getElementById('delBtn');
+    delBtn.addEventListener('click', delBoards)
+
+    let allchk = document.querySelector('thead>tr>th>input');
+    allchk.addEventListener('change', allchecked);
 })
 
 function showBoard() {
-    let getAjax = new XMLHttpRequest();
-    getAjax.open('get', './board');
-    getAjax.send();
-    getAjax.onload = function () {
-        let boards = JSON.parse(getAjax.response);
-        console.log(boards);
+    // 조회 관련 ajax
+    fetch('./board')
+        .then(result => result.json())
+        .then(printTable)
+        .catch(error => console.error(error));
+}
 
-        let tbody = document.getElementById('list');
+function printTable(result) {
+    let boards = result;
 
-        boards.forEach(board => {
-            let tr = makeTr(board);
-            tbody.append(tr);
-        });
-    };
+    let tbody = document.getElementById('list');
+
+    boards.forEach(board => {
+        let tr = makeTr(board);
+        tbody.append(tr);
+    });
 }
 
 function makeTr(board) {
@@ -29,6 +37,12 @@ function makeTr(board) {
 
     let chkbox = document.createElement('input');
     chkbox.setAttribute('type', 'checkbox');
+
+    chkbox.addEventListener('change', function() {
+        let checkProp = document.querySelectorAll('tbody input[type="checkbox"]');
+        document.querySelector('thead>tr>th>input').checked = [...checkProp].every(item => item.checked);
+    })
+    
     let chktd = document.createElement('td');
     chktd.appendChild(chkbox);
     tr.appendChild(chktd);
@@ -46,6 +60,8 @@ function makeTr(board) {
     // 삭제 버튼 추가
     let td = document.createElement('td');
     let btn = document.createElement('button');
+
+    btn.addEventListener('click', deleteBoard);
     let txd = document.createTextNode('삭제');
     btn.appendChild(txd);
     td.appendChild(btn);
@@ -55,28 +71,25 @@ function makeTr(board) {
 }
 
 function addBoard() {
-    let bno = document.getElementById('bno').value;
     let title = document.getElementById('title').value;
     let content = document.getElementById('content').value;
     let writer = document.getElementById('writer').value;
-    let now = new Date();
-    let createDate = now.getFullYear() + '-' +  `0${now.getMonth()}`.slice(-2) + '-' + `0${now.getDate()}`.slice(-2);
 
-    let param = 'bno=' + bno + '&title=' + title + '&content=' + content + '&writer=' + writer + '&creation_date=' + createDate + '&job=insert';
-    console.log(param);
+    let param = 'title=' + title + '&content=' + content + '&writer=' + writer + '&job=insert';
 
-    // 등록하는 서블릿 호출
-    let addAjax = new XMLHttpRequest();
-    addAjax.open('post', './board');
-    addAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    addAjax.send(param);
-    addAjax.onload = addBoardCallback;
+    // 등록 관련 ajax
+    fetch('./board', {
+        method: 'POST',
+        headers: {'Content-type': 'application/x-www-form-urlencoded'},
+        body: param
+      })
+      .then(result => result.json())
+      .then(addBoardCallback)
+      .catch(error => console.error(error));
+
 }
 
-function addBoardCallback() {
-    console.log(this.response);
-    let result = JSON.parse(this.response);
-    console.log(result);
+function addBoardCallback(result) {
 
     if (result.returnCode == 'success') {
         let tbody = document.getElementById('list');
@@ -85,4 +98,72 @@ function addBoardCallback() {
     } else if (result.returnCode == 'fail') {
         alert('처리 중 에러 발생');
     }
+    
+}
+
+function deleteBoard() {
+    let targetTr = this.parentElement.parentElement;
+    let targetBno = targetTr.children[1].textContent;
+
+    // 삭제 관련 ajax
+    fetch('./board', {
+        method: 'POST',
+        headers: {'Content-type': 'application/x-www-form-urlencoded'},
+        body: 'bno=' + targetBno + '&job=delete'
+      })
+      .then(result => result.text())
+      .then(result => {
+          console.log(result);
+        if (result == 'success') {
+            targetTr.remove();
+          } else {
+            alert('처리 중 에러발생!');
+          }
+      })
+      .catch(error => console.error(error));
+}
+
+function delBoards() {
+    
+    let chkboxs = document.querySelectorAll('#list input[type="checkbox"]');
+    
+    let checkedTrs = [];
+    let checkedBnos = [];
+
+    chkboxs.forEach(tr => {
+        if (tr.checked) {
+            checkedTrs.push(tr.parentElement.parentElement);
+            checkedBnos.push(tr.parentElement.nextSibling.textContent)
+        }
+    })
+
+    bnosStr = checkedBnos.join(',');
+
+    // 체크된것들 삭제 관련 ajax
+    fetch('./board', {
+        method: 'POST',
+        headers: {'Content-type': 'application/x-www-form-urlencoded'},
+        body: 'bno=' + bnosStr + '&job=delete'
+      })
+      .then(result => result.text())
+      .then(result => {
+          console.log(result);
+        if (result == 'success') {
+            checkedTrs.forEach(tr => {
+                tr.remove();
+            })
+          } else {
+            alert('처리 중 에러발생!');
+          }
+      })
+      .catch(error => console.error(error));
+}
+
+function allchecked() {
+
+    let chks = document.querySelectorAll('tbody input[type="checkbox"]');
+
+    chks.forEach(chk => {
+        chk.checked = this.checked;
+    })
 }

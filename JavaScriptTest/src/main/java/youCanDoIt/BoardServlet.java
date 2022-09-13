@@ -48,7 +48,7 @@ public class BoardServlet extends HttpServlet {
 
 		Gson gson = new GsonBuilder().create(); // instance 생성.
 
-		String json = gson.toJson(arr); // toJson메소드(cal)
+		String json = gson.toJson(arr); // toJson메소드
 		response.getWriter().print(json); // 출력스트림으로 출력.
 
 	}
@@ -83,7 +83,7 @@ public class BoardServlet extends HttpServlet {
 
 				Gson gson = new GsonBuilder().create(); // instance 생성.
 				
-				String json = gson.toJson(obj); // toJson메소드(cal)
+				String json = gson.toJson(obj); // toJson메소드
 				response.getWriter().print(json);
 
 			} else {
@@ -92,15 +92,19 @@ public class BoardServlet extends HttpServlet {
 		} else if (job.equals("delete")) {
 			
 			String bno = request.getParameter("bno");
-			String[] bnoArr = bno.split(",");
+			String[] bnoArr = bno.split(",");	// 1,3,5,6,... => [1, 3, 5, 6, ...]
 			
 			String bnos = "";
 			for (int i = 0; i < bnoArr.length; i++) {
+				
+				// 1. 개별 삭제 버튼. (1건 삭제)
+				// 2. 선택 삭제 버튼. (마지막 부분일 때 => ... or bno = "마지막 부분")
 				if (i == (bnoArr.length - 1)) {
 					bnos += bnoArr[i];
 					break;
 				}
 				
+				// 선택 삭제 버튼. 중간 부분
 				bnos += bnoArr[i] + " or bno = ";
 			}
 			

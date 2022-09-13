@@ -51,7 +51,7 @@ public class BoardDAO extends DAO {
 		return result > 0 ? true : false;
 	}
 
-	// insert 성공하면 바로 다시 
+	// insert 성공하면 바로 꺼내서 가져오기.
 	public Board insertBoard(Board board) {
 		int result = 0;
 		Board resultBoard = new Board();
@@ -66,6 +66,7 @@ public class BoardDAO extends DAO {
 
 			result = pstmt.executeUpdate();
 			
+			// insert 성공 => 해당하는 row 바로 가져오기(방금 넣어서 bno가 가장 높음)
 			if (result > 0) {
 				String getSql = "select bno, title, content, writer, to_char(creation_date, 'yyyy-mm-dd') as \"creation_date\" "
 								+ "from tbl_board "

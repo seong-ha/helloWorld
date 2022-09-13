@@ -127,17 +127,17 @@ function delBoards() {
     
     let chkboxs = document.querySelectorAll('#list input[type="checkbox"]');
     
-    let checkedTrs = [];
-    let checkedBnos = [];
+    let checkedTrs = [];	// 체크된 input의 tr들(tr 삭제할 때 사용하려고)
+    let checkedBnos = [];	// 체크된 input의 td 옆동네 td에 사는 bno 값들.(bno 뽑아내려고)
 
-    chkboxs.forEach(tr => {
-        if (tr.checked) {
-            checkedTrs.push(tr.parentElement.parentElement);
-            checkedBnos.push(tr.parentElement.nextSibling.textContent)
+    chkboxs.forEach(chkbox => {
+        if (chkbox.checked) {
+            checkedTrs.push(chkbox.parentElement.parentElement);
+            checkedBnos.push(chkbox.parentElement.nextSibling.textContent);
         }
     })
 
-    bnosStr = checkedBnos.join(',');
+    let bnosStr = checkedBnos.join(',');	// [1, 3, 5, 6, ...] => 1,3,5,6,... 
 
     // 체크된것들 삭제 관련 ajax
     fetch('./board', {

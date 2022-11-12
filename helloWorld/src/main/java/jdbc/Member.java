@@ -6,6 +6,7 @@ public class Member {
 	MEMBER_NAME NOT NULL VARCHAR2(20) 
 	ACCOUNT_ID           VARCHAR2(20) 
 	ROLE                 CHAR(1)
+	test1
 	*/
 	
 	private String memberId; //회원ID
